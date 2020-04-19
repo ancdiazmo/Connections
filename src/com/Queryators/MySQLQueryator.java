@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import com.mysql.jdbc.Driver;
 
 //MySQL
@@ -29,13 +28,13 @@ public class MySQLQueryator implements Queryator {
 	}
 	
 	public ResultSet executeQuery (String query) {
-//			try {
-//				PreparedStatement statement = oracleConnection.prepareStatement(query);
-//				ResultSet result = statement.executeQuery();
-//				return result;
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
+			try {
+				PreparedStatement statement = sqlConnection.prepareStatement(query);
+				ResultSet result = statement.executeQuery();
+				return result;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		return null;
 	}	
 }
