@@ -27,7 +27,7 @@ public class OracleQueryator implements Queryator {
 			e.printStackTrace();
 		}
 	}
-	
+	@Override
 	public ResultSet executeQuery (String query) {
 			try {
 				PreparedStatement statement = oracleConnection.prepareStatement(query);
@@ -37,6 +37,16 @@ public class OracleQueryator implements Queryator {
 				e.printStackTrace();
 			}
 		return null;
-	}	
+	}
+
+	@Override
+	public void CloseConection() {
+		try {
+			oracleConnection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
 

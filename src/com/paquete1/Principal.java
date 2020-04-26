@@ -13,27 +13,28 @@ class Principal {
 	private static final String QUERY = "SELECT * FROM COLEGIOS";
 	
 	public static void main (String args []) {
-		tryOutOracle();
+		getFromOracle();
 	}
 	
-	private static void tryOutOracle () {
-		Queryator queryator = new OracleQueryator (CONNECTIONSTRING, USER, PASSWORD);
-		ResultSet result = queryator.executeQuery(QUERY);
-		printResultSet (result);
-	}
-	
-	private static void printResultSet (ResultSet result) {
+	private static void getFromOracle () {
 		try {
-			while(result.next()) {
-				System.out.print(String.valueOf(result.getInt(1)) + " " + result.getString(2));
-				System.out.println();
-			}
-		} catch (SQLException e) {
+			Queryator queryator = new OracleQueryator (CONNECTIONSTRING, USER, PASSWORD);
+			ResultSet result = queryator.executeQuery(QUERY);
+			printResultSet (result);
+		}
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	private static void tryOutMySql () {
+	private static void printResultSet (ResultSet result) throws SQLException {
+		while(result.next()) {
+			System.out.print(String.valueOf(result.getInt(1)) + " " + result.getString(2));
+			System.out.println();
+		}
+	}
+	
+	private static void getFromMySql () {
 //		Queryator queryator = new MySQLQueryator (CONNECTIONSTRING, USER, PASSWORD);
 //		ResultSet result = queryator.executeQuery("SELECT * FROM COLEGIOS");
 //		try {

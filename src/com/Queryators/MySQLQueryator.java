@@ -27,6 +27,7 @@ public class MySQLQueryator implements Queryator {
 		}
 	}
 	
+	@Override
 	public ResultSet executeQuery (String query) {
 			try {
 				PreparedStatement statement = sqlConnection.prepareStatement(query);
@@ -36,6 +37,9 @@ public class MySQLQueryator implements Queryator {
 				e.printStackTrace();
 			}
 		return null;
-	}	
+	}
+
+	@Override
+	public void CloseConection() {}	
 }
 
