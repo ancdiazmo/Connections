@@ -8,9 +8,9 @@ import com.Queryators.Queryator;
 class Principal {
 	
 	private static final String CONNECTIONSTRING = "jdbc:oracle:thin:@//localhost:1521/xe";
-	private static final String USER = "SYS as sysdba";
+	private static final String USER = "SPRINGORAUSER";
 	private static final String PASSWORD = "12345";
-	private static final String QUERY = "SELECT * FROM COLEGIOS";
+	private static final String QUERY = "SELECT * FROM PRODUCTO";
 	
 	public static void main (String args []) {
 		getFromOracle();
@@ -29,7 +29,7 @@ class Principal {
 	
 	private static void printResultSet (ResultSet result) throws SQLException {
 		while(result.next()) {
-			System.out.print(String.valueOf(result.getInt(1)) + " " + result.getString(2));
+			System.out.print(String.valueOf(result.getInt(1)) + " " + result.getString(2) + " " + result.getInt(3));
 			System.out.println();
 		}
 	}
